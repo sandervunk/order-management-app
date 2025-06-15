@@ -24,9 +24,9 @@ export class OrdersService {
     return await this.ordersRepository.find();
   }
 
-  async findOne(orderNumber: number) {
+  async findOne(id: number) {
     const order = await this.ordersRepository.findOne({
-      where: { orderNumber },
+      where: { id },
     });
 
     if (!order) {
@@ -36,16 +36,16 @@ export class OrdersService {
     return order;
   }
 
-  async update(orderNumber: number, updateOrderDto: UpdateOrderDto) {
-    const order = await this.findOne(orderNumber);
+  async update(id: number, updateOrderDto: UpdateOrderDto) {
+    const order = await this.findOne(id);
 
     Object.assign(order, updateOrderDto);
 
-    return await this.ordersRepository.update({ id: order?.id }, order);
+    return await this.ordersRepository.update({ id }, order);
   }
 
-  async remove(orderNumber: number) {
-    const order = await this.findOne(orderNumber);
+  async remove(id: number) {
+    const order = await this.findOne(id);
 
     return await this.ordersRepository.remove(order);
   }
