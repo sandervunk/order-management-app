@@ -1,0 +1,13 @@
+form {
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  margin-right: 4px;
+}
+
+.fields-container {
+  display: flex;
+  gap: 24px;
+}

@@ -1,0 +1,22 @@
+.header-container {
+  display: flex;
+  justify-content: center;
+  background: gray;
+  color: white;
+}
+
+header {
+  display: flex;
+  gap: 24px;
+  font-size: 20px;
+  padding: 16px;
+  width: 800px;
+
+  & nav {
+    cursor: pointer;
+
+    &:hover {
+      color: lightgray;
+    }
+  }
+}
