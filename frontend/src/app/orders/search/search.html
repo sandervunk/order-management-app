@@ -1,20 +1,18 @@
-<h3>Search</h3>
+<h2>Search</h2>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="fields-container">
-    <div>
-      <label for="country">Country:</label>
-      <select id="country" formControlName="country">
-        <option value="">All</option>
-        @for (c of countries; track $index) {
-        <option [value]="c">{{ c }}</option>
-        }
-      </select>
-    </div>
+  <div>
+    <label for="country">Country:</label>
+    <select id="country" formControlName="country">
+      <option value="">All</option>
+      @for (c of countries; track $index) {
+      <option [value]="c">{{ c }}</option>
+      }
+    </select>
+  </div>
 
-    <div>
-      <label for="description">Description:</label>
-      <input id="description" formControlName="description" type="text" />
-    </div>
+  <div>
+    <label for="description">Description:</label>
+    <input id="description" formControlName="description" type="text" />
   </div>
 
   <button type="submit">Search</button>
