@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { Search } from './search/search';
 import { Results } from './results/results';
-import { Api } from '../services/api';
-import { Order, OrderSearchCriteria } from '../model/order.type';
+import { Api } from '../../services/api';
+import { Order, OrderSearchCriteria } from '../../model/order.type';
 import { Dialog } from '@angular/cdk/dialog';
 import { AddNew } from './add-new/add-new';
 

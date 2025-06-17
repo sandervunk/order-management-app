@@ -1,7 +1,7 @@
 import { Component, output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { OrderSearchCriteria } from '../../model/order.type';
-import { countries } from '../../app.config';
+import { OrderSearchCriteria } from '../../../model/order.type';
+import { countries } from '../../../app.config';
 
 @Component({
   selector: 'app-search',

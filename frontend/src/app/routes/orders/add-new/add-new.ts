@@ -6,9 +6,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { countries } from '../../app.config';
-import { Api } from '../../services/api';
-import { Order } from '../../model/order.type';
+import { countries } from '../../../app.config';
+import { Api } from '../../../services/api';
+import { Order } from '../../../model/order.type';
 
 @Component({
   selector: 'app-add-new',

@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Order } from '../../model/order.type';
+import { Order } from '../../../model/order.type';
 import { DatePipe } from '@angular/common';
 
 @Component({
