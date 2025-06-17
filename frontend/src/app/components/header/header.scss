@@ -18,5 +18,10 @@ header {
     &:hover {
       color: lightgray;
     }
+
+    &.active-link {
+      color: #333;
+      font-weight: bold;
+    }
   }
 }
