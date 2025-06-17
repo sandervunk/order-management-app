@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Order } from '../../model/order.type';
 
 @Component({
   selector: 'app-results',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
   standalone: true,
   styleUrl: './results.scss',
 })
-export class Results {}
+export class Results {
+  orderItems = input.required<Array<Order>>();
+}

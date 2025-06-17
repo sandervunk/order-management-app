@@ -1,1 +1,8 @@
 <h2>Results</h2>
+<div>
+  <ul>
+    @for(orderItem of orderItems(); track orderItem.id) {
+    <li>{{orderItem.paymentDescription}}</li>
+    }
+  </ul>
+</div>

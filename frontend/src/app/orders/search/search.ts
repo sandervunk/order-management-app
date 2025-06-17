@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { OrderSearchCriteria } from '../../model/order.type';
 
 @Component({
   selector: 'app-search',
@@ -9,12 +10,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './search.scss',
 })
 export class Search {
-  @Output() onSearchSubmit = new EventEmitter<{
-    country?: string | null;
-    description?: string | null;
-  }>();
+  submitSearch = output<OrderSearchCriteria>();
 
-  form = new FormGroup({
+  formGroup = new FormGroup({
     country: new FormControl(''),
     description: new FormControl(''),
   });
@@ -22,6 +20,6 @@ export class Search {
   countries = ['Estonia', 'Finland', 'Latvia', 'Lithuania', 'Norway', 'Sweden'];
 
   onSubmit(): void {
-    this.onSearchSubmit.emit(this.form.value);
+    this.submitSearch.emit(this.formGroup.value);
   }
 }

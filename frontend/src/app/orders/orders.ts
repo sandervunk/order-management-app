@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Search } from './search/search';
 import { Results } from './results/results';
 import { Api } from '../services/api';
+import { Order, OrderSearchCriteria } from '../model/order.type';
 
 @Component({
   selector: 'app-orders',
@@ -12,11 +13,11 @@ import { Api } from '../services/api';
 })
 export class Orders {
   api = inject(Api);
+  orderItems = signal<Array<Order>>([]);
 
-  handleSearch(criteria: {
-    country?: string | null;
-    description?: string | null;
-  }) {
-    this.api.getOrders(criteria).subscribe((orders) => console.log(orders));
+  handleSearch(criteria: OrderSearchCriteria) {
+    this.api
+      .getOrders(criteria)
+      .subscribe((orders) => this.orderItems.set(orders));
   }
 }
