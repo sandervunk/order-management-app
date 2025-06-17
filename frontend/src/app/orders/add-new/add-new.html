@@ -1,0 +1,55 @@
+<h2>Add new order</h2>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="form-field">
+    <label for="orderNumber">Order number*</label>
+    <input id="orderNumber" formControlName="orderNumber" type="text" />
+  </div>
+
+  <div class="form-field">
+    <label for="paymentDescription">Payment description*</label>
+    <input
+      id="paymentDescription"
+      formControlName="paymentDescription"
+      type="text"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="streetAddress">Street address*</label>
+    <input id="streetAddress" formControlName="streetAddress" type="text" />
+  </div>
+
+  <div class="form-field">
+    <label for="town">Town*</label>
+    <input id="town" formControlName="town" type="text" />
+  </div>
+
+  <div class="form-field">
+    <label for="country">Country*</label>
+    <select id="country" formControlName="country">
+      @for (c of countries; track $index) {
+      <option [value]="c">{{ c }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="amount">Amount*</label>
+    <input id="amount" formControlName="amount" type="number" />
+  </div>
+
+  <div class="form-field">
+    <label for="currency">Currency*</label>
+    <input id="currency" formControlName="currency" type="text" />
+  </div>
+
+  <div class="form-field">
+    <label for="paymentDueDate">Payment due date*</label>
+    <input id="paymentDueDate" formControlName="paymentDueDate" type="date" />
+  </div>
+
+  <div>
+    <button (click)="closeModal()">Cancel</button>
+    <button type="submit" [disabled]="formGroup.invalid">Submit</button>
+  </div>
+</form>

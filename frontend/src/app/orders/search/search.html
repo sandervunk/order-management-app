@@ -1,7 +1,7 @@
 <h2>Search</h2>
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="country">Country:</label>
+  <div class="form-field">
+    <label for="country">Country</label>
     <select id="country" formControlName="country">
       <option value="">All</option>
       @for (c of countries; track $index) {
@@ -10,8 +10,8 @@
     </select>
   </div>
 
-  <div>
-    <label for="description">Description:</label>
+  <div class="form-field">
+    <label for="description">Description</label>
     <input id="description" formControlName="description" type="text" />
   </div>
 

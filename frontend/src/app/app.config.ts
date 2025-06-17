@@ -16,3 +16,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
   ],
 };
+
+export const countries = [
+  'Estonia',
+  'Finland',
+  'Latvia',
+  'Lithuania',
+  'Norway',
+  'Sweden',
+];

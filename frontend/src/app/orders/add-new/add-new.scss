@@ -1,0 +1,20 @@
+:host-context(cdk-dialog-container) {
+  display: block;
+  background: white;
+  filter: drop-shadow(0 0 2em rgba(black, 0.2));
+  padding: 16px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 150px 150px;
+  gap: 8px;
+
+  > :nth-last-child(1):nth-child(odd) {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    grid-column: 2;
+  }
+}

@@ -1,6 +1,7 @@
 import { Component, output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { OrderSearchCriteria } from '../../model/order.type';
+import { countries } from '../../app.config';
 
 @Component({
   selector: 'app-search',
@@ -17,9 +18,9 @@ export class Search {
     description: new FormControl(''),
   });
 
-  countries = ['Estonia', 'Finland', 'Latvia', 'Lithuania', 'Norway', 'Sweden'];
-
   onSubmit(): void {
     this.submitSearch.emit(this.formGroup.value);
   }
+
+  protected readonly countries = countries;
 }

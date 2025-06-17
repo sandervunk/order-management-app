@@ -15,4 +15,8 @@ export class Api {
   }) {
     return this.http.get<Array<Order>>(environment.apiUrl + '/orders');
   }
+
+  postOrder(order: Omit<Order, 'id'>) {
+    return this.http.post<Order>(environment.apiUrl + '/orders', order);
+  }
 }
