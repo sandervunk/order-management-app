@@ -2,3 +2,12 @@ form {
   display: flex;
   gap: 24px;
 }
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 12px;
+  }
+}

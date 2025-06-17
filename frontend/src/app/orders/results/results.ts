@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
 import { Order } from '../../model/order.type';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-results',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './results.html',
   standalone: true,
   styleUrl: './results.scss',

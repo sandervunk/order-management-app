@@ -18,3 +18,12 @@ form {
     grid-column: 2;
   }
 }
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 12px;
+  }
+}

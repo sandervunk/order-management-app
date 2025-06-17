@@ -1,8 +1,45 @@
 <h2>Results</h2>
-<div>
-  <ul>
-    @for(orderItem of orderItems(); track orderItem.id) {
-    <li>{{orderItem.paymentDescription}}</li>
-    }
-  </ul>
+
+<div class="orders-list">
+  @for(orderItem of orderItems(); track orderItem.id) {
+  <div class="order-item">
+    <h3>{{orderItem.orderNumber}}</h3>
+
+    <div>
+      <h4>Payment</h4>
+      <div class="order-item-fields">
+        <div class="order-item-field">
+          <span>Description:</span>
+          <span>{{orderItem.paymentDescription}}</span>
+        </div>
+        <div class="order-item-field">
+          <span>Amount:</span>
+          <span>{{orderItem.amount}} {{orderItem.currency}}</span>
+        </div>
+        <div class="order-item-field">
+          <span>Due date:</span>
+          <span>{{orderItem.paymentDueDate | date: 'dd.MM.yyyy'}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h4>Address</h4>
+      <div class="order-item-fields">
+        <div class="order-item-field">
+          <span>Street:</span>
+          <span>{{orderItem.streetAddress}}</span>
+        </div>
+        <div class="order-item-field">
+          <span>Town:</span>
+          <span>{{orderItem.town}}</span>
+        </div>
+        <div class="order-item-field">
+          <span>Country:</span>
+          <span>{{orderItem.country}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
 </div>
