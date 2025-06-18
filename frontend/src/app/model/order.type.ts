@@ -8,6 +8,7 @@ export type Order = {
   country: string;
   currency: string;
   paymentDueDate: string;
+  linkId: string;
 };
 
 export type OrderSearchCriteria = {

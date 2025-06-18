@@ -6,6 +6,9 @@ export class Order {
   id: number;
 
   @Column({ unique: true })
+  linkId: string;
+
+  @Column({ unique: true })
   orderNumber: number;
 
   @Column({ type: 'text' })

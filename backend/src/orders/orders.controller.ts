@@ -14,6 +14,7 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { Order } from './entities/order.entity';
 import { UniqueOrderNumberPipe } from './pipes/unique-order-number/unique-order-number.pipe';
+import { GenerateLinkIdPipe } from './pipes/generate-link-id/generate-link-id.pipe';
 
 @Controller('orders')
 export class OrdersController {
@@ -21,6 +22,7 @@ export class OrdersController {
 
   @Post()
   @UsePipes(UniqueOrderNumberPipe)
+  @UsePipes(GenerateLinkIdPipe)
   create(@Body() createOrderDto: CreateOrderDto) {
     return this.ordersService.create(createOrderDto);
   }

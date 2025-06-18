@@ -7,4 +7,5 @@ export class CreateOrderDto {
   amount: number;
   currency: string;
   paymentDueDate: Date;
+  linkId: string;
 }
