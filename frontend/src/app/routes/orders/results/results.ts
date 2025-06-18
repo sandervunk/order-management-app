@@ -11,4 +11,23 @@ import { DatePipe } from '@angular/common';
 })
 export class Results {
   orderItems = input.required<Array<Order>>();
+
+  getEstoniaOrders() {
+    return this.orderItems()
+      .filter(({ country }) => country === 'Estonia')
+      .sort(this.sortByDueDate);
+  }
+
+  getOtherOrders() {
+    return this.orderItems()
+      .filter(({ country }) => country !== 'Estonia')
+      .sort(this.sortByDueDate);
+  }
+
+  private sortByDueDate(a: Order, b: Order): number {
+    return (
+      new Date(a.paymentDueDate).getTime() -
+      new Date(b.paymentDueDate).getTime()
+    );
+  }
 }

@@ -24,7 +24,7 @@ export class AddNew {
 
   protected readonly countries = countries;
 
-  private dialogRef = inject(DialogRef, { optional: true });
+  dialogRef = inject(DialogRef, { optional: true });
 
   api = inject(Api);
 

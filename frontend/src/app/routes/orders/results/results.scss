@@ -1,25 +1,21 @@
-.orders-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+table {
+  width: 100%;
 
-.order-item {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  border: 1px solid gray;
-  padding: 8px;
-  border-radius: 5px;
-}
+  thead {
+    text-align: left;
 
-.order-item-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-}
+    th {
+      width: 135px;
+    }
+  }
 
-.order-item-field {
-  display: flex;
-  gap: 8px;
+  tbody {
+    td {
+      vertical-align: top;
+    }
+
+    hr {
+      width: 100%;
+    }
+  }
 }
