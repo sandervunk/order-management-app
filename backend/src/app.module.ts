@@ -20,7 +20,7 @@ import { OrdersModule } from './orders/orders.module';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         entities: [join(process.cwd(), 'dist/**/*.entity.js')],
-        synchronize: true,
+        synchronize: configService.get('DB_SYNC') === 'true',
       }),
     }),
     OrdersModule,
