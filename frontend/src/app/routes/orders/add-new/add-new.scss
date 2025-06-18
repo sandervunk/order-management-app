@@ -26,3 +26,9 @@ form {
     font-size: 12px;
   }
 }
+
+.form-field-error {
+  label {
+    color: red;
+  }
+}

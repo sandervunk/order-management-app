@@ -9,17 +9,22 @@ import {
 import { countries } from '../../../app.config';
 import { Api } from '../../../services/api';
 import { Order } from '../../../model/order.type';
-import { ToastrService } from 'ngx-toastr';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-add-new',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatSnackBarModule, NgClass],
   templateUrl: './add-new.html',
   standalone: true,
   styleUrl: './add-new.scss',
 })
 export class AddNew {
-  constructor(private toastr: ToastrService) {}
+  constructor(private snackBar: MatSnackBar) {}
+
+  protected readonly countries = countries;
+
+  private dialogRef = inject(DialogRef, { optional: true });
 
   api = inject(Api);
 
@@ -58,29 +63,48 @@ export class AddNew {
     }),
   });
 
-  protected readonly countries = countries;
-
   onSubmit(): void {
     if (this.formGroup.valid) {
       this.api.postOrder(this.formGroup.value as Omit<Order, 'id'>).subscribe({
         next: () => {
-          this.toastr.success('Order successfully added!');
+          this.snackBar.open('Order successfully added!', '', {
+            verticalPosition: 'top',
+            duration: 3000,
+            panelClass: ['snackbar-success'],
+          });
           this.closeModal();
         },
         error: (err) => {
-          console.log(err);
+          const field = err?.error?.field;
           const message =
             err.error.message ?? 'Adding an order failed. Please try again';
 
-          this.toastr.error(message);
+          this.snackBar.open(message, '', {
+            verticalPosition: 'top',
+            duration: 3000,
+            panelClass: 'snackbar-error',
+          });
+
+          if (field) {
+            this.formGroup.get(field)?.setErrors({ backend: message });
+            this.formGroup.get(field)?.markAsTouched();
+          }
         },
       });
     }
   }
 
-  private dialogRef = inject(DialogRef, { optional: true });
-
   closeModal() {
     this.dialogRef?.close();
+  }
+
+  isFieldInErrorState(key: keyof Order) {
+    const field = this.formGroup.get(key);
+
+    if (!field) {
+      return false;
+    }
+
+    return field.touched && field.invalid;
   }
 }

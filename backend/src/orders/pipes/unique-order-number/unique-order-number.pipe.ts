@@ -10,9 +10,11 @@ export class UniqueOrderNumberPipe implements PipeTransform {
     const order = await this.ordersService.findByOrderNumber(value.orderNumber);
 
     if (order) {
-      throw new ConflictException(
-        'An order with given order number already exists!',
-      );
+      throw new ConflictException({
+        statusCode: 409,
+        message: 'An order with given order number already exists!',
+        field: 'orderNumber',
+      });
     }
 
     return value;

@@ -1,11 +1,17 @@
 <h2>Add new order</h2>
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div class="form-field">
+  <div
+    class="form-field"
+    [ngClass]="{'form-field-error': isFieldInErrorState('orderNumber')}"
+  >
     <label for="orderNumber">Order number*</label>
     <input id="orderNumber" formControlName="orderNumber" type="number" />
   </div>
 
-  <div class="form-field">
+  <div
+    class="form-field"
+    [ngClass]="{'form-field-error': isFieldInErrorState('paymentDescription')}"
+  >
     <label for="paymentDescription">Payment description*</label>
     <input
       id="paymentDescription"
@@ -14,17 +20,26 @@
     />
   </div>
 
-  <div class="form-field">
+  <div
+    class="form-field"
+    [ngClass]="{'form-field-error': isFieldInErrorState('streetAddress')}"
+  >
     <label for="streetAddress">Street address*</label>
     <input id="streetAddress" formControlName="streetAddress" type="text" />
   </div>
 
-  <div class="form-field">
+  <div
+    class="form-field"
+    [ngClass]="{'form-field-error': isFieldInErrorState('town')}"
+  >
     <label for="town">Town*</label>
     <input id="town" formControlName="town" type="text" />
   </div>
 
-  <div class="form-field">
+  <div
+    class="form-field"
+    [ngClass]="{'form-field-error': isFieldInErrorState('country')}"
+  >
     <label for="country">Country*</label>
     <select id="country" formControlName="country">
       @for (c of countries; track $index) {
@@ -33,23 +48,32 @@
     </select>
   </div>
 
-  <div class="form-field">
+  <div
+    class="form-field"
+    [ngClass]="{'form-field-error': isFieldInErrorState('amount')}"
+  >
     <label for="amount">Amount*</label>
     <input id="amount" formControlName="amount" type="number" />
   </div>
 
-  <div class="form-field">
+  <div
+    class="form-field"
+    [ngClass]="{'form-field-error': isFieldInErrorState('currency')}"
+  >
     <label for="currency">Currency*</label>
     <input id="currency" formControlName="currency" type="text" />
   </div>
 
-  <div class="form-field">
+  <div
+    class="form-field"
+    [ngClass]="{'form-field-error': isFieldInErrorState('paymentDueDate')}"
+  >
     <label for="paymentDueDate">Payment due date*</label>
     <input id="paymentDueDate" formControlName="paymentDueDate" type="date" />
   </div>
 
   <div>
-    <button (click)="closeModal()">Cancel</button>
+    <button type="button" (click)="closeModal()">Cancel</button>
     <button type="submit" [disabled]="formGroup.invalid">Submit</button>
   </div>
 </form>
