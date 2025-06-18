@@ -11,7 +11,6 @@ form {
   gap: 8px;
 
   > :nth-last-child(1):nth-child(odd) {
-    margin-top: 16px;
     display: flex;
     justify-content: flex-end;
     gap: 16px;

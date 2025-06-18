@@ -44,6 +44,10 @@ export class OrdersService {
     return order;
   }
 
+  async findByOrderNumber(orderNumber: number) {
+    return this.ordersRepository.findOne({ where: { orderNumber } });
+  }
+
   async update(id: number, updateOrderDto: UpdateOrderDto) {
     const order = await this.findOne(id);
 

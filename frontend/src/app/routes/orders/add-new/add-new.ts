@@ -9,6 +9,7 @@ import {
 import { countries } from '../../../app.config';
 import { Api } from '../../../services/api';
 import { Order } from '../../../model/order.type';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-new',
@@ -18,6 +19,8 @@ import { Order } from '../../../model/order.type';
   styleUrl: './add-new.scss',
 })
 export class AddNew {
+  constructor(private toastr: ToastrService) {}
+
   api = inject(Api);
 
   formGroup = new FormGroup({
@@ -59,9 +62,19 @@ export class AddNew {
 
   onSubmit(): void {
     if (this.formGroup.valid) {
-      this.api
-        .postOrder(this.formGroup.value as Omit<Order, 'id'>)
-        .subscribe(() => this.closeModal());
+      this.api.postOrder(this.formGroup.value as Omit<Order, 'id'>).subscribe({
+        next: () => {
+          this.toastr.success('Order successfully added!');
+          this.closeModal();
+        },
+        error: (err) => {
+          console.log(err);
+          const message =
+            err.error.message ?? 'Adding an order failed. Please try again';
+
+          this.toastr.error(message);
+        },
+      });
     }
   }
 
