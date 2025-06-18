@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
-import { Repository } from 'typeorm';
+import { FindOptionsWhere, ILike, Repository } from 'typeorm';
 import { Order } from './entities/order.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -20,8 +20,16 @@ export class OrdersService {
     return await this.ordersRepository.save(order);
   }
 
-  async findAll() {
-    return await this.ordersRepository.find();
+  async findAll(query: Partial<Order>) {
+    const where: FindOptionsWhere<Order> = {};
+
+    Object.entries(query).forEach(([key, value]) => {
+      if (value) {
+        where[key] = ILike(`%${value}%`);
+      }
+    });
+
+    return await this.ordersRepository.find({ where });
   }
 
   async findOne(id: number) {

@@ -15,7 +15,7 @@ export class Search {
 
   formGroup = new FormGroup({
     country: new FormControl(''),
-    description: new FormControl(''),
+    paymentDescription: new FormControl(''),
   });
 
   onSubmit(): void {

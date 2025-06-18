@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Order } from '../model/order.type';
 
@@ -13,7 +13,17 @@ export class Api {
     country?: string | null;
     description?: string | null;
   }) {
-    return this.http.get<Array<Order>>(environment.apiUrl + '/orders');
+    let params = new HttpParams();
+
+    Object.entries(criteria).forEach(([key, value]) => {
+      if (value) {
+        params = params.set(key, value);
+      }
+    });
+
+    return this.http.get<Array<Order>>(environment.apiUrl + '/orders', {
+      params,
+    });
   }
 
   postOrder(order: Omit<Order, 'id'>) {
