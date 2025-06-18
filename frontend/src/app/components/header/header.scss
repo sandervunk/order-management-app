@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   background: gray;
-  color: #333;
+  color: white;
 }
 
 header {
@@ -16,7 +16,11 @@ header {
     cursor: pointer;
 
     &.active-link {
-      color: white;
+      font-weight: bold;
+    }
+
+    &:hover {
+      color: #eee;
     }
   }
 }

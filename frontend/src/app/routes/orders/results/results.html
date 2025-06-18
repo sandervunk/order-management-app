@@ -15,10 +15,11 @@
     </tr>
   </thead>
   <tbody>
+    @if(getEstoniaOrders().length > 0) {
     <tr>
-      <td colspan="8" class="full-width-row">Orders from Estonia</td>
+      <td colspan="8" class="full-width-row">Estonia</td>
     </tr>
-    @for(orderItem of getEstoniaOrders(); track orderItem.id) {
+    } @for(orderItem of getEstoniaOrders(); track orderItem.id) {
     <tr>
       <td>{{ orderItem.orderNumber }}</td>
       <td>{{ orderItem.amount }}</td>
@@ -29,11 +30,11 @@
       <td>{{ orderItem.town }}</td>
       <td>{{ orderItem.country }}</td>
     </tr>
-    }
+    } @if(getOtherOrders().length > 0){
     <tr>
-      <td colspan="8" class="full-width-row">Orders from other countries</td>
+      <td colspan="8" class="full-width-row">Other countries</td>
     </tr>
-    @for(orderItem of getOtherOrders(); track orderItem.id) {
+    } @for(orderItem of getOtherOrders(); track orderItem.id) {
     <tr>
       <td>{{ orderItem.orderNumber }}</td>
       <td>{{ orderItem.amount }}</td>

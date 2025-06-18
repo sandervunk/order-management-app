@@ -17,6 +17,15 @@ form {
     gap: 16px;
     grid-column: 2;
   }
+
+  .action-buttons > button[type='button'] {
+    background-color: white;
+    color: black;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
 }
 
 .form-field {
