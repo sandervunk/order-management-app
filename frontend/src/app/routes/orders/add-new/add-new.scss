@@ -3,11 +3,12 @@
   background: white;
   filter: drop-shadow(0 0 2em rgba(black, 0.2));
   padding: 16px;
+  border-radius: 6px;
 }
 
 form {
   display: grid;
-  grid-template-columns: 150px 150px;
+  grid-template-columns: 250px 250px;
   gap: 8px;
 
   > :nth-last-child(1):nth-child(odd) {
@@ -24,6 +25,8 @@ form {
 
   label {
     font-size: 12px;
+    color: #555;
+    margin-bottom: 2px;
   }
 }
 
@@ -31,4 +34,12 @@ form {
   label {
     color: red;
   }
+}
+
+h2 {
+  margin-bottom: 8px;
+}
+
+.action-buttons {
+  margin-top: 8px;
 }
