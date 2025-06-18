@@ -1,7 +1,9 @@
-<div class="orders-header">
-  <h1>Orders</h1>
-  <button (click)="openModal()">Add new</button>
-</div>
+<div class="orders-container">
+  <div class="orders-header">
+    <h1>Orders</h1>
+    <button (click)="openModal()">Add new</button>
+  </div>
 
-<app-search (submitSearch)="handleSearch($event)" />
-<app-results [orderItems]="orderItems()" />
+  <app-search (submitSearch)="handleSearch($event)" />
+  <app-results [orderItems]="orderItems()" />
+</div>
